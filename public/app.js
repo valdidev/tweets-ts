@@ -31,3 +31,8 @@ function renderView(tweetView) {
         //renderTweet
     }
 }
+function renderTweet(tweetView, view, tweet) {
+    const tweetContainer = document.createElement("div");
+    tweetContainer.id = "container-" + tweet.id;
+    tweetContainer.classList.add("tweetContainer");
+}

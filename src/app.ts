@@ -48,3 +48,9 @@ function renderView(tweetView: TweetView) {
     //renderTweet
   }
 }
+
+function renderTweet(tweetView: TweetView, view: HTMLDivElement, tweet: Tweet) {
+  const tweetContainer = document.createElement("div");
+  tweetContainer.id = "container-" + tweet.id;
+  tweetContainer.classList.add("tweetContainer");
+}
