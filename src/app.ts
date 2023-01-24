@@ -44,8 +44,13 @@ function renderView(tweetView: TweetView) {
     document.querySelector("#tweets")?.append(view);
   }
 
-  for (const tweet of tweetView.tweets) {
-    //renderTweet
+  for (let i = 0; i < tweetView.tweets.length; i++) {
+    renderTweet(
+      tweetView,
+      view as HTMLDivElement,
+      tweetView.tweets[i],
+      i === tweetView.tweets.length - 1
+    );
   }
 }
 
