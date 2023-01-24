@@ -60,7 +60,6 @@ function renderTweet(tweetView, view, tweet, last) {
         countContainer.textContent = value.length.toString() + "/250";
         updateTweet(tweetView, tweet, value);
     });
-    ////
     form.append(textarea, countContainer);
     if (last) {
         form.appendChild(buttonAddMore);
@@ -79,3 +78,11 @@ function updateTweet(tweetView, tweet, value) {
         ref.message = value;
     }
 }
+const btnNewTweet = document.querySelector("#btnNewTweet");
+const tweetsContainer = document.querySelector("#tweets");
+const tweetsData = [];
+btnNewTweet.addEventListener("click", (e) => {
+    e.preventDefault();
+    const newTweetView = createMainTweet();
+    renderView(newTweetView);
+});

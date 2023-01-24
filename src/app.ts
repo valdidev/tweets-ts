@@ -95,8 +95,6 @@ function renderTweet(
     updateTweet(tweetView, tweet, value);
   });
 
-  ////
-
   form.append(textarea, countContainer);
 
   if (last) {
@@ -120,3 +118,13 @@ function updateTweet(tweetView: TweetView, tweet: Tweet, value: Message) {
     ref.message = value;
   }
 }
+
+const btnNewTweet = document.querySelector("#btnNewTweet");
+const tweetsContainer = document.querySelector("#tweets");
+const tweetsData: TweetView[] = [];
+
+btnNewTweet!.addEventListener("click", (e) => {
+  e.preventDefault();
+  const newTweetView = createMainTweet();
+  renderView(newTweetView);
+});
