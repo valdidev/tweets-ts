@@ -76,9 +76,42 @@ function renderTweet(
   const countContainer = document.createElement("div");
   countContainer.classList.add("countContainer");
 
+  //   listeners
+  buttonAddMore.addEventListener("click", (e) => {
+    e.preventDefault();
+    const anotherTweet = createTweet();
+    tweetView.tweets.push(anotherTweet);
+    renderView(tweetView);
+  });
+
+  textarea.addEventListener("input", (e) => {
+    const value = (e.target as HTMLTextAreaElement).value;
+    countContainer.textContent = value.length.toString() + "/250";
+    updateTweet(tweetView, tweet, value);
+  });
+
+  ////
+
+  form.append(textarea, countContainer);
+
   if (last) {
     form.appendChild(buttonAddMore);
   }
 
   view.appendChild(tweetContainer);
+}
+
+function updateTweet(tweetView: TweetView, tweet: Tweet, value: Message) {
+  let ref: Tweet | null = null;
+  for (let i = 0; i < tweetView.tweets.length; i++) {
+    const t = tweetView.tweets[i];
+
+    if (t.id === tweet.id) {
+      ref = t;
+    }
+  }
+
+  if (ref) {
+    ref.message = value;
+  }
 }
