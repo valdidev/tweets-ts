@@ -49,8 +49,36 @@ function renderView(tweetView: TweetView) {
   }
 }
 
-function renderTweet(tweetView: TweetView, view: HTMLDivElement, tweet: Tweet) {
+function renderTweet(
+  tweetView: TweetView,
+  view: HTMLDivElement,
+  tweet: Tweet,
+  last: boolean
+) {
   const tweetContainer = document.createElement("div");
   tweetContainer.id = "container-" + tweet.id;
   tweetContainer.classList.add("tweetContainer");
+
+  const form = document.createElement("form");
+  form.id = "form-" + tweet.id;
+  tweetContainer.appendChild(form);
+
+  const textarea = document.createElement("textarea");
+  textarea.id = "textarea-" + tweet.id;
+  textarea.value = tweet.message;
+  textarea.maxLength = 250;
+
+  const buttonAddMore = document.createElement("button");
+  buttonAddMore.classList.add("button", "buttonNew");
+  buttonAddMore.value = "Add another tweet";
+  buttonAddMore.append(document.createTextNode("Add another tweet"));
+
+  const countContainer = document.createElement("div");
+  countContainer.classList.add("countContainer");
+
+  if (last) {
+    form.appendChild(buttonAddMore);
+  }
+
+  view.appendChild(tweetContainer);
 }
